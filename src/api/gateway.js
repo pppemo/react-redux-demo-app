@@ -6,7 +6,7 @@ const client = axios.create({
 
 export default {
   searchCountriesByName: countryName => client.get(
-    `/name/${countryName}?fields=name;alpha2Code`, {
+    `/name/${countryName}`, {
       params: {
         fields: 'name;alpha2Code'
       }

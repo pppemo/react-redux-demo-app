@@ -10,6 +10,7 @@ import {
 import { BeatLoader } from 'react-spinners'
 import Gateway from './../../api/gateway'
 import Downshift from 'downshift'
+import styles from './CountrySearch.module.scss'
 
 class CountrySearch extends Component {
   static propTypes = {
@@ -37,7 +38,10 @@ class CountrySearch extends Component {
           alert(`There was an error: ${error}`)
           console.error(error)
         }
-        this.setState({ isLoadingSuggestions: false })
+        this.setState({
+          isLoadingSuggestions: false,
+          items: []
+        })
       })
   })
 
@@ -63,26 +67,29 @@ class CountrySearch extends Component {
             <FormControl {...getInputProps()} type="text"
               placeholder="Type country name..."/>
           </FormGroup>
-          {(isOpen || isLoadingSuggestions) && <ListGroup {...getMenuProps()}>
-            {isLoadingSuggestions ? (<ListGroupItem>
-                <BeatLoader
-                  color={'gray'}
-                />
-              </ListGroupItem>
-            ) : items.slice(0,9)
-              .map((item, index) => (
-                <ListGroupItem
-                  {...getItemProps({
-                    key: item.name,
-                    index,
-                    item
-                  })}
-                  active={highlightedIndex === index}
-                >
-                  {item.name}
+          {(isOpen || isLoadingSuggestions) &&
+          <div className={styles.suggestionsContainer}>
+            <ListGroup {...getMenuProps()} className={styles.suggestions}>
+              {isLoadingSuggestions ? (<ListGroupItem>
+                  <BeatLoader
+                    color={'gray'}
+                  />
                 </ListGroupItem>
-              ))}
-          </ListGroup>}
+              ) : items.slice(0, 9)
+                .map((item, index) => (
+                  <ListGroupItem
+                    {...getItemProps({
+                      key: item.name,
+                      index,
+                      item
+                    })}
+                    active={highlightedIndex === index}
+                  >
+                    {item.name}
+                  </ListGroupItem>
+                ))}
+            </ListGroup>
+          </div>}
         </div>
       )}
     </Downshift>)
