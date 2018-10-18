@@ -9,8 +9,12 @@ import {
 const initialState = {
   countries: {},
   isLoadingCountry: false,
-  currentCountryCode: null
+  currentCountryCode: null,
+  recentSearches: []
 }
+
+const prependCountryToRecentSearches = (country, recentSearches) =>
+  [{ name: country.name, code: country.alpha3Code}].concat(recentSearches).slice(0,5)
 
 export default createReducer(initialState, {
   [LOAD_COUNTRY]: state => ({
@@ -24,7 +28,8 @@ export default createReducer(initialState, {
       ...state.countries,
       [country.alpha3Code]: country
     },
-    currentCountryCode: country.alpha3Code
+    currentCountryCode: country.alpha3Code,
+    recentSearches: prependCountryToRecentSearches(country, state.recentSearches)
   }),
   [LOAD_COUNTRY_FAILED]: (state) => ({
     ...state,
