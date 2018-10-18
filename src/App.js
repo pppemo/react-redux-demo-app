@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import Countries from './containers/countries/Countries'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Countries />
+        <Countries/>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

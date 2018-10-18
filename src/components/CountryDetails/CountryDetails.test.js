@@ -7,31 +7,31 @@ describe('CountryDetails component', () => {
     const details = {
       currencies: [
         {
-          code: "FKP",
-          name: "Falkland Islands pound",
-          symbol: "£"
+          code: 'FKP',
+          name: 'Falkland Islands pound',
+          symbol: '£'
         }
       ],
       languages: [
         {
-          iso639_1: "en",
-          iso639_2: "eng",
-          name: "English",
-          nativeName: "English"
+          iso639_1: 'en',
+          iso639_2: 'eng',
+          name: 'English',
+          nativeName: 'English'
         }
       ],
-      flag: "https://restcountries.eu/data/flk.svg",
-      name: "Falkland Islands (Malvinas)",
-      alpha3Code: "FLK",
-      capital: "Stanley",
-      region: "Americas",
+      flag: 'https://restcountries.eu/data/flk.svg',
+      name: 'Falkland Islands (Malvinas)',
+      alpha3Code: 'FLK',
+      capital: 'Stanley',
+      region: 'Americas',
       timezones: [
-        "UTC-04:00"
+        'UTC-04:00'
       ]
     }
 
     const tree = TestRenderer
-      .create(<CountryDetails countryDetails={details} />).toJSON()
+      .create(<CountryDetails countryDetails={details}/>).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

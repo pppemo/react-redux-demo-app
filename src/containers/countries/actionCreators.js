@@ -10,7 +10,7 @@ import buildAction from './../../store/buildAction'
 export const loadCountry = countryCode =>
   (dispatch, getState) => {
     const state = getState()
-    if(state.countries.countries[countryCode]) {
+    if (state.countries.countries[countryCode]) {
       dispatch(buildAction(SET_CURRENT_COUNTRY, { countryCode }))
     } else {
       dispatch(buildAction(LOAD_COUNTRY))

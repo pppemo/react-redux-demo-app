@@ -16,7 +16,6 @@ const initialState = {
 const prependCountryToRecentSearches = (country, recentSearches) =>
   [{ name: country.name, code: country.alpha3Code }].concat(recentSearches)
 
-
 export default createReducer(initialState, {
   [LOAD_COUNTRY]: state => ({
     ...state,
@@ -30,7 +29,8 @@ export default createReducer(initialState, {
       [country.alpha3Code]: country
     },
     currentCountryCode: country.alpha3Code,
-    recentSearches: prependCountryToRecentSearches(country, state.recentSearches)
+    recentSearches: prependCountryToRecentSearches(country,
+      state.recentSearches)
   }),
   [LOAD_COUNTRY_FAILED]: (state) => ({
     ...state,

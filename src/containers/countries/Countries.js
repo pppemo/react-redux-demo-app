@@ -26,7 +26,8 @@ class Countries extends Component {
         </Panel.Heading>
         <Panel.Body>
           <CountrySearch onSelected={this.onCountryChanged}/>
-          {this.shouldShowRecentSearches() && <RecentSearches label="Countries recently searched"
+          {this.shouldShowRecentSearches() &&
+          <RecentSearches label="Countries recently searched"
             searches={recentSearches}
             onSelected={this.props.loadCountry}
           />}
