@@ -17,5 +17,6 @@ The application is based on [REST Countries API](https://restcountries.eu).
 * Reselect
 * Axios
 * ESLint
+* Jest
 
 *Obviously sweet design is not a subject of this project ;-)*

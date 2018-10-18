@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecentSearches component should render with recent searches 1`] = `
+<div>
+  <span>
+    Component label
+    : 
+  </span>
+  <span>
+    <h4
+      className="labelSizer"
+    >
+      <span
+        className="label label label-default"
+        onClick={[Function]}
+      >
+        Poland
+      </span>
+    </h4>
+  </span>
+  <span>
+    <h4
+      className="labelSizer"
+    >
+      <span
+        className="label label label-default"
+        onClick={[Function]}
+      >
+        Germany
+      </span>
+    </h4>
+  </span>
+</div>
+`;
+
+exports[`RecentSearches component should render without recent searches 1`] = `
+<div>
+  <span>
+    Component label
+    : 
+  </span>
+</div>
+`;

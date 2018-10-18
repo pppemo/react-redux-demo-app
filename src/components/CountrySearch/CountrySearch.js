@@ -69,7 +69,8 @@ class CountrySearch extends Component {
               color={'gray'}
               size={10}
             />}
-            <FormControl {...getInputProps()} type="text"
+            <FormControl {...getInputProps()}
+              type="text"
               placeholder="Type country name..."/>
           </FormGroup>
           {isOpen &&
