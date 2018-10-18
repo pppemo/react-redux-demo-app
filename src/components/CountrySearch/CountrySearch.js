@@ -63,19 +63,16 @@ class CountrySearch extends Component {
           highlightedIndex
         }) => (
         <div>
-          <FormGroup bsSize="large">
+          <FormGroup bsSize="large" className={styles.searchInputContainer}>
+            {isLoadingSuggestions && <BeatLoader
+              className={styles.searchSpinner} color={'gray'}/>}
             <FormControl {...getInputProps()} type="text"
               placeholder="Type country name..."/>
           </FormGroup>
-          {(isOpen || isLoadingSuggestions) &&
+          {isOpen &&
           <div className={styles.suggestionsContainer}>
             <ListGroup {...getMenuProps()} className={styles.suggestions}>
-              {isLoadingSuggestions ? (<ListGroupItem>
-                  <BeatLoader
-                    color={'gray'}
-                  />
-                </ListGroupItem>
-              ) : items.slice(0, 9)
+              {items.slice(0, 9)
                 .map((item, index) => (
                   <ListGroupItem
                     className={styles.suggestionItem}
