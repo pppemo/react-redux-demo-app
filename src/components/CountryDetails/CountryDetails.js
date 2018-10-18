@@ -32,7 +32,7 @@ const CountryDetails = ({ countryDetails }) => {
             <tr>
               <td><b>Currencies</b></td>
               <td>{currencies.map(currency => (
-                <div>{currency.name} ({currency.code})</div>
+                <div key={currency.code}>{currency.name} ({currency.code})</div>
               ))}</td>
             </tr>
             <tr>
@@ -44,7 +44,7 @@ const CountryDetails = ({ countryDetails }) => {
         </Col>
         <Col sm={6}>
           <div className={styles.countryFlag}>
-            <img src={flag}/>
+            <img alt="Flag" src={flag}/>
           </div>
         </Col>
       </Row>
