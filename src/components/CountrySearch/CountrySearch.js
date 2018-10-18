@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { debounce } from 'throttle-debounce'
 import {
   FormControl,
   FormGroup,
@@ -7,30 +8,46 @@ import {
   ListGroupItem
 } from 'react-bootstrap'
 import { BeatLoader } from 'react-spinners'
+import Gateway from './../../api/gateway'
 import Downshift from 'downshift'
 
 class CountrySearch extends Component {
   static propTypes = {
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        alpha2Code: PropTypes.string.isRequired
-      })
-    ).isRequired,
-    isLoading: PropTypes.bool.isRequired,
     onSelected: PropTypes.func
   }
 
-  static defaultProps = {
-    items: null,
-    isLoading: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      items: [],
+      isLoadingSuggestions: false
+    }
   }
 
+  onInputValueChange = debounce(300, value => {
+    this.setState({ isLoadingSuggestions: true })
+    Gateway.searchCountriesByName(value)
+      .then(response => this.setState({
+        items: response.data,
+        isLoadingSuggestions: false
+      }))
+      .catch(error => {
+        const { status } = error.response
+        if (status !== 404) { // if 404 kill silently - country not found
+          alert(`There was an error: ${error}`)
+          console.error(error)
+        }
+        this.setState({ isLoadingSuggestions: false })
+      })
+  })
+
   render() {
-    const { items, isLoading, onSelected } = this.props
+    const { onSelected } = this.props
+    const { items, isLoadingSuggestions } = this.state
     return (<Downshift
       onChange={selection => onSelected && onSelected(selection)}
       itemToString={item => (item ? item.name : '')}
+      onInputValueChange={this.onInputValueChange}
     >
       {({
           getInputProps,
@@ -46,13 +63,13 @@ class CountrySearch extends Component {
             <FormControl {...getInputProps()} type="text"
               placeholder="Type country name..."/>
           </FormGroup>
-          {(isOpen || isLoading) && <ListGroup {...getMenuProps()}>
-            {isLoading ? (<ListGroupItem>
+          {(isOpen || isLoadingSuggestions) && <ListGroup {...getMenuProps()}>
+            {isLoadingSuggestions ? (<ListGroupItem>
                 <BeatLoader
                   color={'gray'}
                 />
               </ListGroupItem>
-            ) : items
+            ) : items.slice(0,9)
               .map((item, index) => (
                 <ListGroupItem
                   {...getItemProps({
