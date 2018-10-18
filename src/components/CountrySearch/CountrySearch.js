@@ -65,7 +65,10 @@ class CountrySearch extends Component {
         <div>
           <FormGroup bsSize="large" className={styles.searchInputContainer}>
             {isLoadingSuggestions && <BeatLoader
-              className={styles.searchSpinner} color={'gray'}/>}
+              className={styles.searchSpinner}
+              color={'gray'}
+              size={10}
+            />}
             <FormControl {...getInputProps()} type="text"
               placeholder="Type country name..."/>
           </FormGroup>
