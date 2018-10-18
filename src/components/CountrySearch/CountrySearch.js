@@ -78,6 +78,7 @@ class CountrySearch extends Component {
               ) : items.slice(0, 9)
                 .map((item, index) => (
                   <ListGroupItem
+                    className={styles.suggestionItem}
                     {...getItemProps({
                       key: item.name,
                       index,

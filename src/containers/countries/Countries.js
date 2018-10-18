@@ -15,7 +15,7 @@ class Countries extends Component {
     return <div>
       <Panel bsStyle="primary">
         <Panel.Heading>
-          <Panel.Title componentClass="h3">Countries</Panel.Title>
+          <Panel.Title componentClass="h3">Learn more about world's countries</Panel.Title>
         </Panel.Heading>
         <Panel.Body>
           <CountrySearch onSelected={this.onCountryChanged}/>
