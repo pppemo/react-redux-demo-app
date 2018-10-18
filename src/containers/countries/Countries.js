@@ -6,6 +6,7 @@ import { Panel } from 'react-bootstrap'
 import CountrySearch from './../../components/CountrySearch/CountrySearch'
 import CountryDetails from './../../components/CountryDetails/CountryDetails'
 import RecentSearches from './../../components/RecentSearches/RecentSearches'
+import * as CountriesSelectors from './selectors'
 import styles from './Countries.module.scss'
 
 class Countries extends Component {
@@ -15,7 +16,7 @@ class Countries extends Component {
   shouldShowRecentSearches = () => !!this.props.recentSearches.length
 
   render() {
-    const { countries, currentCountryCode, isLoadingCountry, recentSearches } = this.props
+    const { currentCountry, isLoadingCountry, recentSearches } = this.props
 
     return <div>
       <Panel bsStyle="primary">
@@ -32,8 +33,8 @@ class Countries extends Component {
           {isLoadingCountry ? (<div className={styles.spinnerContainer}>
             <BeatLoader color={'gray'}/>
           </div>) : (
-            currentCountryCode &&
-            <CountryDetails countryDetails={countries[currentCountryCode]}/>
+            currentCountry &&
+            <CountryDetails countryDetails={currentCountry}/>
           )}
         </Panel.Body>
       </Panel>
@@ -42,10 +43,9 @@ class Countries extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  countries: state.countries.countries,
-  currentCountryCode: state.countries.currentCountryCode,
+  currentCountry: CountriesSelectors.currentCountry(state),
   isLoadingCountry: state.countries.isLoadingCountry,
-  recentSearches: state.countries.recentSearches
+  recentSearches: CountriesSelectors.recentSearches(state),
 })
 
 export default connect(mapStateToProps, {
