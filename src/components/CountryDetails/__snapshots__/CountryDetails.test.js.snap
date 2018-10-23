@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CountryDetails component should render details 1`] = `
+<div>
+  <h1>
+    Falkland Islands (Malvinas)
+  </h1>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-6"
+    >
+      <div
+        className="table-responsive"
+      >
+        <table
+          className="table"
+        >
+          <tbody>
+            <tr>
+              <td>
+                <b>
+                  Alpha code
+                </b>
+              </td>
+              <td>
+                FLK
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  Region
+                </b>
+              </td>
+              <td>
+                Americas
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  Capital
+                </b>
+              </td>
+              <td>
+                Stanley
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  Timezones
+                </b>
+              </td>
+              <td>
+                UTC-04:00
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  Currencies
+                </b>
+              </td>
+              <td>
+                <div>
+                  Falkland Islands pound
+                   (
+                  FKP
+                  )
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  Languages
+                </b>
+              </td>
+              <td>
+                English
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div
+      className="col-sm-6"
+    >
+      <div
+        className="countryFlag"
+      >
+        <img
+          alt="Flag"
+          src="https://restcountries.eu/data/flk.svg"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
